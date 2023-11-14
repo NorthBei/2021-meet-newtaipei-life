@@ -1,0 +1,11 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+.circle-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include fun.circle(36px);
+  border: 2px solid var.$dark;
+  background: white;
+}

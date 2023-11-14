@@ -1,0 +1,35 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+.label-tag {
+  display: inline-flex;
+  background: white;
+  color: var.$dark;
+  border: 2px solid var.$dark;
+  font-size: 15px; // size: medium
+  border-radius: 40px;
+  border-top-left-radius: 0;
+  padding: 4px 12px;
+
+  @include fun.phone() {
+    padding: 2px 8px;
+  }
+
+  &.sm {
+    font-size: 12px;
+    padding: 2px 8px;
+  }
+  &.lg {
+    font-size: 18px;
+  }
+
+  &.blue {
+    background: var.$blue;
+  }
+  &.red {
+    background: var.$red;    
+  }
+  &.green {
+    background: var.$green;    
+  }
+}

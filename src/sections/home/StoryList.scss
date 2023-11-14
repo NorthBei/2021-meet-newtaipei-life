@@ -1,0 +1,72 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+#story {
+  padding: 0 50px 0;
+
+  @include fun.phone() {
+    padding: 0;
+  }
+
+  .chip-radio {
+    @include fun.phone() {
+      font-size: 14px;
+    }
+  }
+
+  .rules {
+    @include fun.phone() {
+      font-size: 15px;
+    }
+  }
+
+  .action-button-wrapper {
+
+    @include fun.phone() {
+      position: fixed;
+      bottom: 0;
+      z-index: 200;
+      transform: translateY(100%);
+      transition: transform 0.3s ease-out;
+      
+      &.show {
+        transform: translateY(0);
+      }
+    }
+
+    .action-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px 10px;
+      border: 2px solid var.$dark;
+      box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.75);
+      border-radius: 100px;
+      font-weight: bold;
+      font-size: 16px;
+      color: var.$dark;
+      
+      &.red {
+        background: var.$red;
+
+        @include fun.phone() {
+          border-right-width: 1px;
+        }
+      }
+      &.green {
+        background: var.$green;
+
+        @include fun.phone() {
+          border-left-width: 1px;
+        }
+      }
+
+      @include fun.phone() {
+        padding: 7px 10px;
+        width: 50vw;
+        border-radius: 0;
+      }
+    }
+    
+  }
+}

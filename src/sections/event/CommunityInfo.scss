@@ -1,0 +1,35 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+/* override bootstrap css */
+
+.team-tabs.nav-tabs {
+  border: none;
+
+  &.red {
+    background: var.$red;
+  }
+
+  &.blue {
+    background: var.$blue;
+  }
+
+  &.green {
+    background: var.$green;
+  }
+
+  .nav-item {
+    flex: 1;
+
+    .nav-link {
+      color: var.$dark;
+      border-radius: 0;
+      width: 100%;
+      background: inherit;
+
+      &:not(.active) {
+        background: var.$light;
+      }
+    }
+  }
+}

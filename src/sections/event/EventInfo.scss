@@ -1,0 +1,22 @@
+#event-info {
+  .intro {
+    line-height: 25px;
+
+    .title {
+      font-size: 18px;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  .notice {
+    font-size: 15px;
+    line-height: 25px;
+
+    .list {
+      padding-left: 20px;
+    }
+  }
+}

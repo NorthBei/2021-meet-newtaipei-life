@@ -1,0 +1,36 @@
+#district-slide {
+  .slide-content {
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+#finger-indicator {
+  animation: floatY 0.8s ease-in-out infinite alternate;
+}
+
+#taiwan-map {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+
+  .taiwan {
+    position: absolute;
+      top: 0;
+      right: 0;
+      height: 148.5%;
+      z-index: -1;
+  }
+}
+
+@keyframes floatY {
+  0% {
+      transform: translateY(10px);
+  }
+  100% {
+      transform: translateY(-10px);
+  }
+}

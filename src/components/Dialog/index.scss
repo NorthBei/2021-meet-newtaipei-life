@@ -1,0 +1,26 @@
+@use '/src/styles/_variables' as var;
+
+/* override bootstap css */
+.dialog-modal {
+  .dialog-content {
+    border-radius: 40px;
+    overflow: hidden;
+
+    .modal-header,
+    .modal-footer {
+      border: none;
+    }
+  }
+
+  .button {
+    padding: 5px 10px;
+    background: var.$blue;
+    border: 2px solid var.$dark;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 100px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    color: var.$dark;
+  }
+}

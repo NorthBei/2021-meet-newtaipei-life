@@ -1,0 +1,27 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+.story-item {
+  @include fun.phone() {
+    font-size: 15px;
+  }
+  
+  .image {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .chip {
+    padding: 4px 6px;
+    border-radius: 100px;
+    font-size: 14px;
+    color: var.$dark;
+    background: white;
+    border: 1px solid var.$dark;
+
+    @include fun.phone() {
+      font-size: 13px;
+    }
+  }
+  
+}

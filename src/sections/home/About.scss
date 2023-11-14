@@ -1,0 +1,33 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+#about {
+  .film-wrapper {
+    $margin-x: -(var.$menu-button-width/3*2);
+
+    display: flex;
+    border: 3px solid var.$dark;
+    border-radius: 70px;
+    overflow: hidden;
+    margin-left: $margin-x;
+    margin-right: $margin-x;
+    // https://monshin.github.io/202109/css/safari-border-radius-overflow-hidden/
+    // https://kes3583.medium.com/safari-bug-border-radius-overflow-hidden-c2a09f40ad89
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+
+    @include fun.phone() {
+      border-radius: 20px;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .introduction {
+    .content {
+      @include fun.phone() {
+        line-height: 25px;
+        font-size: 15px;
+      }
+    }
+  }
+}

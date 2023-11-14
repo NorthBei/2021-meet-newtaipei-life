@@ -1,0 +1,25 @@
+@use '/src/styles/_variables' as var;
+
+.menu-button {
+  color: var.$dark;
+  text-align: center;
+  border: 2px solid var.$dark;
+  box-shadow: 2px 4px 0px var.$dark;
+  border-radius: 100px;
+  background: white;
+  font-size: 14px;
+  padding: 4px;
+  width: var.$menu-button-width;
+
+  &.is-current,
+  &:hover {
+    background-color: var.$blue;
+    color: var.$dark;
+  }
+
+  /* override boostrap css */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

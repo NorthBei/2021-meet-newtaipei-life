@@ -1,0 +1,29 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+.base-container {
+
+  .sub-container-side {
+    min-width: var.$sub-container-width;
+    // 圖片(children)水平置中
+    text-align: center;
+
+    @include fun.phone() {
+      min-width: 10px;
+      width: 0;
+    }
+  }
+
+  .subtitle-image {
+    position: sticky;
+    top: 40px;
+    z-index: 101;
+
+    @include fun.phone() {
+      top: 80px;
+      width: 38px;
+
+      transform: translateX(-25px);
+    }
+  }
+}

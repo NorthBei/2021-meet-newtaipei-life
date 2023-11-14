@@ -1,0 +1,22 @@
+@import './bootstrap_variables';
+
+$phone: map-get($grid-breakpoints, md);
+$wide-screen: 1920px;
+
+@mixin circle($size: 0) {
+  height: $size;
+  width: $size;
+  border-radius: 50%;
+}
+
+@mixin phone() {
+  @media (max-width: $phone) {
+    @content;
+  }
+}
+
+@mixin wide-screen() {
+  @media (min-width: $wide-screen) {
+    @content;
+  }
+}

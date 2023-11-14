@@ -1,0 +1,100 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+#online {
+  .event-item {
+    .info {
+      @include fun.phone() {
+        font-size: 15px;
+      }
+    }
+
+    .label,
+    .date,
+    .time {
+      color: var.$gray;
+    }
+
+    .title {
+      color: var.$dark;
+      font-size: 18px;
+
+      @include fun.phone() {
+        font-size: 17px;
+      }
+    }
+  }
+
+  /* override bootstrap css */
+  #filter {
+
+    .title {
+      @include fun.phone() {
+        font-size: 15px;
+      }
+    }
+
+    .chip-radio {
+      @include fun.phone() {
+        font-size: 14px;
+      }
+    }
+
+    .date-select {
+      background-color: var.$light;
+      border-radius: 50px;
+      padding: 3px 15px;
+      max-width: 165px;
+
+      @include fun.phone() {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    $timeSelectWidth: 64px;
+
+    .time-select-list {
+      position: relative;
+
+      &:before {
+        content: '';
+        height: 2px;
+        width: calc(100% - $timeSelectWidth);
+        background: var.$dark;
+        position: absolute;
+        left: $timeSelectWidth/2;
+        right: $timeSelectWidth/2;
+        bottom: 8px;
+        z-index: -1;
+      }
+
+      @include fun.phone() {
+        margin-left: -($timeSelectWidth/3);
+      }
+    }
+
+    .time-select {
+      padding: 0;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      font-size: 14px;
+      min-width: $timeSelectWidth;
+
+      > .form-check-input {
+        border: 2px solid var.$dark;
+        margin: 0;
+
+        &:checked[type=radio] {
+          background-image: none;
+          background-color: var.$red;
+        }
+
+        &:focus {
+          box-shadow: 0 0 0 0.25rem rgba(var.$red, 0.25);
+        }
+      }
+    }
+  }
+}

@@ -1,95 +1,60 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client';
 
-export default function Home() {
+import './page.scss';
+
+import React, { useCallback, useState } from 'react';
+import { Waypoint } from 'react-waypoint';
+
+import BaseSection from '@/components/BaseSection';
+import Footer from '@/components/Footer';
+import { offlineEvents, onlineEvents } from '@/data/events';
+import aboutSubtitle from '@/images/about-side-image.svg';
+import offlineSubtitle from '@/images/offline-side-image.svg';
+import onlineSubtitle from '@/images/online-side-image.svg';
+import storySubtitle from '@/images/story-side-image.svg';
+import About from '@/sections/home/About';
+import Floating from '@/sections/home/Floating';
+import Fold from '@/sections/home/Fold';
+import Offline from '@/sections/home/Offline';
+import Online from '@/sections/home/Online';
+import StoryList from '@/sections/home/StoryList';
+
+function Home() {
+  const [isOutFold, setIsOutFold] = useState(false);
+
+  const onEnterFoldSection = useCallback(() => setIsOutFold(false), []);
+
+  const onLeaveFoldSection = useCallback(() => setIsOutFold(true), []);
+
+  const onPositionChange = useCallback((e: Waypoint.CallbackArgs) => {
+    setIsOutFold(e.currentPosition === 'above');
+  }, []);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
+    <main id="app">
+      <Floating isOutFold={isOutFold} />
+      <Waypoint onPositionChange={onPositionChange} onEnter={onEnterFoldSection} onLeave={onLeaveFoldSection}>
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+          <Fold />
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      </Waypoint>
+      <BaseSection id="about-wrapper" image={aboutSubtitle.src} alt="about subtitle">
+        <About />
+      </BaseSection>
+      <BaseSection id="online-wrapper" image={onlineSubtitle.src} alt="online subtitle">
+        <Online events={onlineEvents} />
+      </BaseSection>
+      <BaseSection id="offline-wrapper" image={offlineSubtitle.src} alt="offline subtitle">
+        <Offline events={offlineEvents} />
+      </BaseSection>
+      <BaseSection id="story-wrapper" image={storySubtitle.src} alt="story subtitle">
+        <StoryList />
+      </BaseSection>
+      <section className="py-md-4 py-0 mb-md-0 mb-5">
+        <Footer />
+      </section>
     </main>
-  )
+  );
 }
+
+export default Home;

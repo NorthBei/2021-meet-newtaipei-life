@@ -1,0 +1,65 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+// default value
+.sub-container,
+.sub-container-side {
+  @include fun.phone() {
+    padding-bottom: 50px;
+  }
+}
+
+#about-wrapper {
+  .sub-container,
+  .sub-container-side {
+    padding: 100px 0 0px;
+  
+    @include fun.phone() {
+      padding: 60px 0 30px;
+    }
+  }
+}
+
+#online-wrapper {
+  .sub-container,
+  .sub-container-side {
+    padding: 20px 0 50px;
+
+    @include fun.phone() {
+      padding: 0 0 30px;
+    }
+  }
+}
+
+#offline-wrapper {
+  .sub-container,
+  .sub-container-side {
+    padding: 0 0 80px;
+
+    @include fun.phone() {
+      padding: 0;
+    }
+  }
+}
+
+#offline-wrapper {
+  .sub-container,
+  .sub-container-side {
+    padding: 0 0 80px;
+
+    @include fun.phone() {
+      padding: 0 0 50px;
+    }
+  }
+}
+
+#story-wrapper {
+  .sub-container,
+  .sub-container-side {
+    padding: 0 0 80px;
+
+    @include fun.phone() {
+      padding: 0 0 50px;
+    }
+  }
+}

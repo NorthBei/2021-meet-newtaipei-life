@@ -1,0 +1,147 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+
+#fold {
+  height: 100vh;
+  width: 100%;
+  padding: 20px;
+
+  @include fun.phone() {
+    padding: 10px;
+  }
+}
+
+#content {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  .logo-desktop {
+    width: 250px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    opacity: 0;
+    animation: 0.5s ease-in 3s forwards fadeIn;
+
+    @include fun.wide-screen() {
+      width: 325px;
+      transform: translate(20px,20px);
+    }
+  }
+
+  .logo-mobile {
+    width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    animation: 1s ease-in 2s reverse forwards fadeIn;
+
+    @include fun.wide-screen() {
+      width: 550px;
+    }
+
+    @include fun.phone() {
+      top: 25px;
+      transform: translate(-50%, 0%);
+      width: 80vw;
+      max-width: 400px;
+      animation: none;
+    }
+  }
+
+  .calendar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    transform: scale(0.8);
+
+    @include fun.wide-screen() {
+      transform: scale(1) translate(-20px, 20px);
+    }
+
+    @include fun.phone() {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .event-date {
+    height: 80px;
+    position: absolute;
+    z-index: 100;
+    right: 30px;
+    bottom: 50px;
+
+    @include fun.wide-screen() {
+      height: 100px;
+    }
+
+    @include fun.phone() {
+      height: 70px;
+      width: 100%;
+      text-align: center;
+      left: 50%;
+      bottom: 60px;
+      transform: translateX(-50%);
+    }
+  }
+
+  .slide-wrapper {
+    border: 3px solid #3E3A39;
+    border-radius: 80px;
+    overflow: hidden;
+    position: relative;
+    // https://monshin.github.io/202109/css/safari-border-radius-overflow-hidden/
+    // https://kes3583.medium.com/safari-bug-border-radius-overflow-hidden-c2a09f40ad89
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+
+    @include fun.phone() {
+      border-radius: 20px;
+    }
+  }
+
+  & > div:not(.slide-wrapper) {
+    z-index: 100;
+  }
+}
+
+/* override boostrap css */
+
+#home-slide {
+  .carousel-inner,
+  .carousel-item {
+    height: 100%;
+  }
+  .carousel-item > .slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .carousel-indicators > button[data-bs-target] {
+    @include fun.circle(15px);
+    border: 2px solid var.$dark;
+    background: white;
+    opacity: 1;
+
+    &.active {
+      background: var.$blue;
+    }
+
+    @include fun.phone() {
+      @include fun.circle(10px);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

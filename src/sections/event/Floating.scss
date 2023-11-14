@@ -1,0 +1,41 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+#event-floating {
+  .logo-desktop {
+    width: 250px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+
+    @include fun.wide-screen() {
+      width: 325px;
+      transform: translate(20px,20px);
+    }
+  }
+
+  .fix-button-group {
+    position: fixed;
+    z-index: 200;
+    right: 0;
+    transform: translateX(-100%);
+    bottom: 60px;
+  
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var.$light;
+      border: 2px solid var.$dark;
+      box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.75);
+      border-radius: 50%;
+  
+      @include fun.circle(48px)
+    }
+  
+    @include fun.phone() {
+      transform: translateX(-20px);
+    }
+  }
+}

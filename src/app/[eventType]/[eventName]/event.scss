@@ -1,0 +1,75 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+#event {
+  .text-level-1 {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.4;
+    
+    @include fun.phone() {
+      font-size: 24px;
+    }
+  }
+
+  .text-level-2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+/* override bootstrap css */
+
+.intro-tabs.nav-tabs {
+  border-width: 2px;
+  border-bottom-color: var.$light !important;
+
+  &.red {
+    color: var.$red !important;
+    border-bottom-color: var.$red;
+  }
+
+  &.blue {
+    color: var.$blue !important;
+    border-bottom-color: var.$blue;
+  }
+
+  &.green {
+    color: var.$green !important;
+    border-bottom-color: var.$green;
+  }
+
+  .nav-item {
+    font-size: 20px;
+    
+    @include fun.phone() {
+      flex: 1;
+    }
+
+    .nav-link {
+      color: var.$dark;
+      border: none;
+      font-weight: bold;
+      position: relative;
+
+      @include fun.phone() {
+        width: 100%;
+      }
+
+      &.active {
+        color: inherit;
+  
+        &::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          border-width: 1px;
+          border-style: solid;
+          bottom: -1px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+  }
+}

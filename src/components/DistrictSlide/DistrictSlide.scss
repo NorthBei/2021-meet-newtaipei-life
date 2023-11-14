@@ -1,0 +1,82 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+#mapinfo-slider-wrapper {
+  border-radius: 40px;
+  overflow: hidden;
+  border: 2px solid var.$dark;
+  color: var.$dark;
+  font-size: 16px;
+  background: white;
+  max-width: 500px;
+
+  @include fun.phone() {
+    max-width: 90vw;
+  }
+
+  .roof-title {
+    background: var.$light;
+    border-bottom: 2px solid var.$dark;
+    font-weight: bold;
+    font-size: 20px;
+    color: var.$dark;
+    text-align: center;
+
+    &.red {
+      background-color: var.$red;
+    }
+    &.green {
+      background-color: var.$green;
+    }
+    &.blue {
+      background-color: var.$blue;
+    }
+  }
+
+  .title {
+    font-size: 19px;
+  }
+  
+  .link-button {
+    padding: 5px 10px;
+    background: var.$light;
+    border: 2px solid var.$dark;
+    border-radius: 100px;
+    font-weight: bold;
+    font-size: 16px;
+    color: var.$dark;
+
+    &.red {
+      background-color: var.$red;
+    }
+    &.green {
+      background-color: var.$green;
+    }
+    &.blue {
+      background-color: var.$blue;
+    }
+  }
+
+  /* override react-responsive-carousel css*/
+  .control-arrow {
+    opacity: 1;
+    bottom: 50px;
+    $arrowSize: 14px;
+
+    &:hover {
+      background: none;
+    }
+
+    &.control-prev::before {
+      border-right: $arrowSize solid var.$dark;
+    }
+
+    &.control-next::before {
+      border-left: $arrowSize solid var.$dark;
+    }
+
+    &::before {
+      border-width: 11px;
+    }
+  }
+}

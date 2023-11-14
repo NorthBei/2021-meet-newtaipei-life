@@ -1,0 +1,21 @@
+@use '/src/styles/utils';
+
+@import '~bootstrap/scss/bootstrap';
+
+:root {
+  font-family: system-ui, -apple-system, "PingFang TC", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* override bootstrap css */
+a {
+  color: inherit;
+  text-decoration: none;
+  
+  &:hover {
+    color: inherit;
+  }
+}

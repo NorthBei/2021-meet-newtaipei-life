@@ -1,0 +1,67 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+$yearCircleSize: 40px;
+
+#cute-calendar {
+  .year {
+    position: relative;
+    z-index: 100;
+
+    .year-circle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include fun.circle($yearCircleSize);
+      background: #FFFFFF;
+      border: 2px solid var.$dark;
+    }
+  }
+  .date {
+    height: 200px;
+    width: 250px;
+    border: 2px solid var.$dark;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: -($yearCircleSize/2);
+  
+    @include fun.phone() {
+      height: 150px;
+      width: 90px;
+    }
+
+    .head {
+      background: var.$dark;
+      min-height: 35px;
+      position: relative;
+      color: white;
+  
+      .desktop {
+        position: absolute;
+        display: flex;
+        left: 50%;
+        top: -50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  
+    .body {
+      background: white;
+      
+      .line {
+        width: 2px;
+        background: var.$dark;
+      }
+
+      .text {
+        writing-mode: vertical-lr;
+        font-size: 18px;
+
+        @include fun.phone() {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  
+}

@@ -1,0 +1,15 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+.user-info {
+  .avatar {
+    border: 2px solid var.$dark;
+    border-radius: 50%;
+    @include fun.circle(72px);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+  }
+  
+  .intro {
+    line-height: 25px;
+  }
+}

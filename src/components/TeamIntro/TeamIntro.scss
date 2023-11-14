@@ -1,0 +1,45 @@
+@use '/src/styles/_variables' as var;
+@use '/src/styles/mixins' as fun;
+
+#team-intro {
+  .avatar {
+    border: 2px solid var.$dark;
+    border-radius: 50%;
+    width: 72px;
+    overflow: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+  }
+
+  .sdgs {
+    width: 60px;
+
+    @include fun.phone() {
+      width: 48px;
+    }
+  }
+
+  .area .image {
+    width: 200px;
+
+    @include fun.phone() {
+      width: 100%;
+    }
+  }
+
+  .area,
+  .plan {
+    .intro {
+      line-height: 25px;
+    }
+  }
+
+  .fqa-list {
+    .fqa {
+      padding: 18px;
+      border: 1px solid var.$dark;
+      border-radius: 15px;
+      font-size: 16px;
+      color: var.$dark;
+    }
+  }
+}
